@@ -1,0 +1,13 @@
+{
+	"[python]": {
+		"editor.codeActionsOnSave": {
+			"source.fixAll.ruff": "always",
+			"source.fixAll.pylance": "always",
+			"source.organizeImports.ruff": "always"
+		},
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.formatOnType": true,
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4
+	}
+}
