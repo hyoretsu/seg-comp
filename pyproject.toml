@@ -2,7 +2,9 @@
 name = "seg-comp"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pynput>=1.8.1",
+]
 
 [project.scripts]
 start = "main:__main__"
