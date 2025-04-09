@@ -1,6 +1,12 @@
 import logging
 
+from dotenv import load_dotenv
 from pynput.keyboard import Listener
+from sqlalchemy import select
+
+load_dotenv()
+
+a = select("asd")
 
 logging.basicConfig(
     filename="out.log", level=logging.DEBUG, format="%(asctime)s - %(message)s"
