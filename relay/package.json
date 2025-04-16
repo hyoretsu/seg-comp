@@ -3,14 +3,17 @@
 	"module": "index.ts",
 	"type": "module",
 	"private": true,
+	"scripts": {
+		"start": "bun run --watch index.ts"
+	},
+	"dependencies": {
+		"amqplib": "^0.10.7"
+	},
 	"devDependencies": {
 		"@types/amqplib": "^0.10.7",
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
 		"typescript": "latest"
-	},
-	"dependencies": {
-		"amqplib": "^0.10.7"
 	}
 }

@@ -1,30 +1,23 @@
-import amqplib from "amqplib";
-import type { BunRequest } from "bun";
+import amqplib from 'amqplib'
+import type { BunRequest } from 'bun'
 
-const server = Bun.serve({
-  routes: {
-    "/health": async (req: BunRequest): Response => {
-      // Acesso aos cookies da requisição
-      const cookies = req.cookies;
+const conn = await amqplib.connect(process.env.RABBITMQ_URL!)
+const ch = await conn.createChannel()
 
-      // Obter um cookie específico
-      const sessionCookie = cookies.get("session");
-      
-      if (sessionCookie != null) {
-        
-          const queue = 'tasks';
-          const conn = await amqplib.connect('amqp://localhost');
-        
-          // Sender
-          const ch2 = await conn.createChannel();
+const queue = 'default'
+await ch.assertQueue(queue)
 
-          ch2.sendToQueue(queue, Buffer.from(sessionCookie));
-          
-        return new Response();
-      } 
-      return new Response();
-    },
-  },
-});
+Bun.serve({
+	port: process.env.PORT ?? 3333,
+	routes: {
+		'/health': async (req: BunRequest): Promise<Response> => {
+			console.log('recebeu')
+			const dataCookie = req.cookies.get('X-App-Data')
+			if (dataCookie != null) {
+				ch.sendToQueue(queue, Buffer.from(dataCookie))
+			}
 
-console.log("Server listening at: " + server.url);
+			return new Response()
+		},
+	},
+})
