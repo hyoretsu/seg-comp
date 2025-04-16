@@ -1,8 +1,9 @@
 import amqplib from "amqplib";
+import type { BunRequest } from "bun";
 
 const server = Bun.serve({
   routes: {
-    "/health": async (req: Request): Response => {
+    "/health": async (req: BunRequest): Response => {
       // Acesso aos cookies da requisição
       const cookies = req.cookies;
 
@@ -17,7 +18,7 @@ const server = Bun.serve({
           // Sender
           const ch2 = await conn.createChannel();
 
-          ch2.sendToQueue(queue, Buffer.from(cookies));
+          ch2.sendToQueue(queue, Buffer.from(sessionCookie));
           
         return new Response();
       } 

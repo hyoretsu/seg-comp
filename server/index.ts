@@ -1,8 +1,9 @@
 import amqplib from "amqplib";
+import type { BunRequest } from "bun";
 
 const server = Bun.serve({
   routes: {
-    "/health": (req: Request): Response => {
+    "/health": (req: BunRequest): Response => {
       // Acesso aos cookies da requisição
       const cookies = req.cookies;
 
