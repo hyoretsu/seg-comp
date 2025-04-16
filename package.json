@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "amqplib": "^0.10.7"
-  }
+	"name": "root",
+	"private": true,
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4"
+	},
+	"trustedDependencies": ["@biomejs/biome"]
 }
