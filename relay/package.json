@@ -4,9 +4,13 @@
 	"type": "module",
 	"private": true,
 	"devDependencies": {
+		"@types/amqplib": "^0.10.7",
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
 		"typescript": "latest"
+	},
+	"dependencies": {
+		"amqplib": "^0.10.7"
 	}
 }
