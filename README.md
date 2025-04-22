@@ -1,1 +1,12 @@
-Criar um keylogger que, ao ser executado, permaneça ativo em segundo plano enviando as teclas digitadas remotamente para um servidor, sendo armazenadas e visualizadas. Posteriormente poderiam ser usados para identificar senhas ou informações sobre a vida da pessoa para chantagem.
+# Keylogger Parser
+
+> Captura teclas em background e extrai padrões sensíveis.
+
+## Funcionalidades
+- **Coleta e envio** de logs de teclado para servidor remoto  
+- **Pós‑processamento** (`normalize_text`): decodifica `\n`, `\t`, `\xNN` e remove control codes  
+- **Detecção por strategies**:  
+  - E‑mails (fallback capturando até 10 caracteres antes do `@` e “senha” após `.com`)  
+  - Flags e keywords de redes sociais  
+  - Cartões de crédito (13–16 dígitos)  
+  - Telefones (formatos nacionais/internacionais)
