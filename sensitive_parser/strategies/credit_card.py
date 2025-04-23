@@ -3,7 +3,7 @@ from .base import PatternStrategy
 
 
 class CreditCardStrategy(PatternStrategy):
-    CC_RE = re.compile(r'(?:\d[ -]*?){13,16}')
+    CC_RE = re.compile(r'(?:\d[ -]*?){11,16}')
 
     def detect(self, text: str):
         matches = []
